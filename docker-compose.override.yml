@@ -1,0 +1,6 @@
+services:
+  web:
+    volumes:
+      - "$PWD/backend:/app/backend"
+      - "$PWD/public:/app/public"
+      - "$PWD/src:/app/src"

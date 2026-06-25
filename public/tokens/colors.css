@@ -1,0 +1,90 @@
+/* Wren — Color tokens */
+:root {
+  --terracotta-50:  #FBEFE9;
+  --terracotta-100: #F6DACE;
+  --terracotta-200: #EFBCA6;
+  --terracotta-300: #E89C7E;
+  --terracotta-400: #E07A5F;
+  --terracotta-500: #D2674B;
+  --terracotta-600: #C45B3E;
+  --terracotta-700: #A4492F;
+  --terracotta-800: #7E3825;
+
+  --ink-50:  #EEEFF3;
+  --ink-100: #D6D8E1;
+  --ink-200: #AEB1C4;
+  --ink-300: #7E839F;
+  --ink-400: #585D7C;
+  --ink-500: #4D5170;
+  --ink-600: #494D69;
+  --ink-700: #3D405B;
+  --ink-800: #2E3047;
+  --ink-900: #212233;
+
+  --honey-50:  #FCF4E2;
+  --honey-100: #F8E7BE;
+  --honey-200: #F1D38A;
+  --honey-300: #E8B04B;
+  --honey-400: #D99A2E;
+  --honey-500: #BC8120;
+
+  --sage-50:  #EEF2EC;
+  --sage-100: #D7E1D2;
+  --sage-200: #B3C6AB;
+  --sage-300: #81A684;
+  --sage-400: #5F8666;
+  --sage-500: #486B50;
+
+  --paper:      #F8F4ED;
+  --paper-warm: #F2EBDF;
+  --card:       #FFFDF9;
+  --neutral-50:  #F4EFE7;
+  --neutral-100: #EAE3D7;
+  --neutral-200: #DDD4C4;
+  --neutral-300: #C8BDA9;
+  --neutral-400: #A89C85;
+  --neutral-500: #847A66;
+  --neutral-600: #61594A;
+  --neutral-700: #443E33;
+
+  --rose-400: #C8546B;
+  --rose-50:  #F8E7EA;
+}
+
+:root {
+  --text-strong:   var(--ink-800);
+  --text-body:     var(--ink-700);
+  --text-muted:    var(--neutral-600);
+  --text-subtle:   var(--neutral-500);
+  --text-on-dark:  var(--paper);
+  --text-on-brand: #FFFFFF;
+  --text-accent:   var(--terracotta-700);
+
+  --surface-page:   var(--paper);
+  --surface-alt:    var(--paper-warm);
+  --surface-card:   var(--card);
+  --surface-sunken: var(--neutral-50);
+  --surface-dark:   var(--ink-700);
+  --surface-inverse:var(--ink-800);
+
+  --brand:         var(--terracotta-400);
+  --brand-hover:   var(--terracotta-600);
+  --brand-press:   var(--terracotta-700);
+  --brand-soft:    var(--terracotta-50);
+  --accent-honey:  var(--honey-300);
+  --accent-sage:   var(--sage-300);
+
+  --border-subtle: var(--neutral-200);
+  --border-default:var(--neutral-300);
+  --border-strong: var(--neutral-400);
+  --border-brand:  var(--terracotta-300);
+
+  --success:       var(--sage-400);
+  --success-soft:  var(--sage-50);
+  --warning:       var(--honey-400);
+  --warning-soft:  var(--honey-50);
+  --danger:        var(--rose-400);
+  --danger-soft:   var(--rose-50);
+
+  --focus-ring: var(--terracotta-400);
+}

@@ -1,0 +1,61 @@
+/* Wren — base element styles */
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  color: var(--text-strong);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-snug);
+  margin: 0;
+}
+
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
+
+.wren-btn { -webkit-tap-highlight-color: transparent; }
+.wren-btn--primary:hover:not(:disabled)   { background: var(--brand-hover); }
+.wren-btn--primary:active:not(:disabled)   { background: var(--brand-press); transform: translateY(1px); }
+.wren-btn--secondary:hover:not(:disabled)  { background: var(--surface-sunken); border-color: var(--border-strong); }
+.wren-btn--secondary:active:not(:disabled) { transform: translateY(1px); }
+.wren-btn--soft:hover:not(:disabled)       { background: var(--terracotta-100); }
+.wren-btn--soft:active:not(:disabled)      { transform: translateY(1px); }
+.wren-btn--sage:hover:not(:disabled)       { background: var(--sage-500); }
+.wren-btn--sage:active:not(:disabled)      { transform: translateY(1px); }
+.wren-btn--ghost:hover:not(:disabled)      { background: var(--neutral-100); }
+.wren-btn--ghost:active:not(:disabled)     { transform: translateY(1px); }
+
+.wren-card--interactive:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); cursor: pointer; }
+
+.wren-tag:hover { border-color: var(--border-strong); }
+
+.wren-input:focus-within { border-color: var(--brand) !important; box-shadow: var(--ring) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wren-btn, .wren-card--interactive { transition: none !important; }
+}
+
+.wren-eyebrow {
+  font-family: var(--font-text);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-accent);
+}

@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+dbs/
+.docker-cache/
+ops/deployments/secrets/*
+!ops/deployments/secrets/.gitkeep
+ops/security/certs/*
+!ops/security/certs/.gitkeep

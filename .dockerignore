@@ -1,0 +1,10 @@
+.git
+__pycache__/
+.venv/
+*.pyc
+.docker-cache/
+dbs/
+ops/security/
+ops/deployments/secrets/
+*.log
+*.db

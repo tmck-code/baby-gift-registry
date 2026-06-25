@@ -1,0 +1,41 @@
+/* Wren — Typography tokens */
+:root {
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-text:    'Hanken Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'Spline Sans Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-display: 400;
+
+  --text-2xs:  0.6875rem;
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-md:   1.125rem;
+  --text-lg:   1.375rem;
+  --text-xl:   1.75rem;
+  --text-2xl:  2.25rem;
+  --text-3xl:  2.875rem;
+  --text-4xl:  3.75rem;
+  --text-5xl:  4.75rem;
+
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.12em;
+
+  --type-display-font:  var(--font-display);
+  --type-heading-font:  var(--font-display);
+  --type-body-font:     var(--font-text);
+  --type-label-font:    var(--font-text);
+  --type-eyebrow-font:  var(--font-text);
+}

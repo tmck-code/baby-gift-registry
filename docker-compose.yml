@@ -1,0 +1,58 @@
+secrets:
+  guest_password:
+    file: ./ops/deployments/secrets/guest_password
+  admin_password:
+    file: ./ops/deployments/secrets/admin_password
+  session_secret:
+    file: ./ops/deployments/secrets/session_secret
+  tls_key:
+    file: ./ops/security/certs/privkey.pem
+  tls_cert:
+    file: ./ops/security/certs/fullchain.pem
+
+x-web-base: &web-base
+  build:
+    context: .
+    dockerfile: ops/Dockerfile
+    target: web
+  restart: always
+  ports:
+    - "$WEB_PORT:8000"
+  volumes:
+    - ./dbs/db-data:/app/data
+  deploy:
+    resources:
+      limits: { memory: 256M }
+
+services:
+  web:
+    <<: *web-base
+    environment:
+      ENV: "${ENV:?set ENV explicitly}"
+      DB_PATH: "$DB_PATH"
+      GUEST_PASSWORD_FILE: /run/secrets/guest_password
+      ADMIN_PASSWORD_FILE: /run/secrets/admin_password
+      SESSION_SECRET_FILE: /run/secrets/session_secret
+    secrets:
+      - guest_password
+      - admin_password
+      - session_secret
+    profiles: [dev]
+
+  web-prod:
+    <<: *web-base
+    environment:
+      ENV: "${ENV:?set ENV explicitly}"
+      DB_PATH: "$DB_PATH"
+      GUEST_PASSWORD_FILE: /run/secrets/guest_password
+      ADMIN_PASSWORD_FILE: /run/secrets/admin_password
+      SESSION_SECRET_FILE: /run/secrets/session_secret
+      TLS_KEY_FILE: /run/secrets/tls_key
+      TLS_CERT_FILE: /run/secrets/tls_cert
+    secrets:
+      - guest_password
+      - admin_password
+      - session_secret
+      - tls_key
+      - tls_cert
+    profiles: [prod]
