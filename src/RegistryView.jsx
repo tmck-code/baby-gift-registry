@@ -35,19 +35,23 @@ function RegistryView({ gifts, onReserve }) {
             <GiftCard
               title={g.title}
               store={g.store}
-              price={g.price}
-              status={g.remaining <= 0 ? 'fulfilled' : g.status}
+              image={g.image}
+              status={g.mine ? 'reserved' : g.remaining <= 0 ? 'fulfilled' : g.status}
               mostWanted={g.mostWanted}
-              group={g.group}
-              pledged={g.pledged}
-              goal={g.goal}
               thumbTint={g.tint}
               thumbIcon={<Ico name={g.icon} size={44} strokeWidth={1.3} color="var(--terracotta-600)" />}
-              onReserve={g.remaining > 0 ? () => onReserve(g) : undefined}
+              onReserve={g.mine || g.remaining > 0 ? () => onReserve(g) : undefined}
             />
-            {!g.group && g.qty > 1 && (
-              <div style={{ fontSize: 12, color: 'var(--text-subtle)', textAlign: 'center', marginTop: 4 }}>{g.remaining} of {g.qty} remaining</div>
-            )}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 6, minHeight: 18 }}>
+              {g.qty > 1 && (
+                <span style={{ fontSize: 12, color: 'var(--text-subtle)' }}>{g.remaining} of {g.qty} remaining</span>
+              )}
+              {g.url && (
+                <a href={g.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: 'var(--terracotta-600)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  View item <Ico name="external-link" size={12} />
+                </a>
+              )}
+            </div>
           </div>
         ))}
       </div>

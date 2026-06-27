@@ -7,7 +7,7 @@ function Home({ onNavigate }) {
       {/* Hero */}
       <section style={{ maxWidth: 1080, margin: '0 auto', padding: '64px 28px 40px', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 56, alignItems: 'center' }}>
         <div>
-          <span className="wren-eyebrow">Maya &amp; Theo · Baby shower</span>
+          <span className="wren-eyebrow">Beth &amp; Tom · Baby shower</span>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 60, lineHeight: 1.02, letterSpacing: '-0.02em', margin: '14px 0 0', color: 'var(--text-strong)' }}>
             We can&rsquo;t wait<br />to meet her.
           </h1>
@@ -20,10 +20,10 @@ function Home({ onNavigate }) {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 28 }}>
             <div style={{ display: 'flex' }}>
-              <Avatar name="Maya Olsen" size={36} ring style={{ marginRight: -10 }} />
-              <Avatar name="Theo Park" size={36} ring />
+              <Avatar name="Beth" size={36} ring style={{ marginRight: -10 }} />
+              <Avatar name="Tom" size={36} ring />
             </div>
-            <span style={{ fontSize: 14, color: 'var(--text-muted)' }}>From Maya &amp; Theo, with love</span>
+            <span style={{ fontSize: 14, color: 'var(--text-muted)' }}>From Beth &amp; Tom, with love</span>
           </div>
         </div>
 
@@ -48,25 +48,6 @@ function Home({ onNavigate }) {
             <Button full variant="soft" trailingIcon={<Ico name="arrow-right" size={17} />} onClick={() => onNavigate('rsvp')}>Let them know you&rsquo;re coming</Button>
           </div>
         </Card>
-      </section>
-
-      {/* How it works */}
-      <section style={{ background: 'var(--surface-alt)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', marginTop: 32 }}>
-        <div style={{ maxWidth: 1080, margin: '0 auto', padding: '48px 28px', display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 28 }}>
-          {[
-            ['hand-heart', 'Pick something', 'Browse the registry and choose a gift that feels right — any size.'],
-            ['check-check', 'Reserve it', 'Mark it reserved so nobody doubles up. We won&rsquo;t peek at who chose what.'],
-            ['package', 'We&rsquo;ll handle the rest', 'Ship it or bring it to the shower. Group gifts let you chip in together.'],
-          ].map(([icon, h, p], i) => (
-            <div key={i}>
-              <span style={{ display: 'inline-flex', width: 46, height: 46, borderRadius: 'var(--radius-lg)', background: 'var(--card)', border: '1px solid var(--border-subtle)', color: 'var(--terracotta-500)', alignItems: 'center', justifyContent: 'center', boxShadow: 'var(--shadow-xs)' }}>
-                <Ico name={icon} size={22} />
-              </span>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 21, margin: '14px 0 6px', color: 'var(--text-strong)' }}>{h}</h3>
-              <p style={{ fontSize: 14.5, lineHeight: 1.55, color: 'var(--text-muted)', margin: 0 }} dangerouslySetInnerHTML={{ __html: p }} />
-            </div>
-          ))}
-        </div>
       </section>
     </div>
   );

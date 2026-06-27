@@ -13,7 +13,7 @@ function RsvpView({ onNavigate }) {
           <Ico name="party-popper" size={30} />
         </span>
         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 40, margin: '20px 0 8px', color: 'var(--text-strong)' }}>See you there!</h1>
-        <p style={{ fontSize: 17, color: 'var(--text-muted)', lineHeight: 1.6 }}>We&rsquo;ve got you down. {event.date}, {event.place}. Maya &amp; Theo are so glad you&rsquo;re coming.</p>
+        <p style={{ fontSize: 17, color: 'var(--text-muted)', lineHeight: 1.6 }}>We&rsquo;ve got you down. {event.date}, {event.place}. Beth &amp; Tom are so glad you&rsquo;re coming.</p>
         <div style={{ marginTop: 24 }}>
           <Button variant="soft" leadingIcon={<Ico name="gift" size={17} />} onClick={() => onNavigate('registry')}>Browse the registry</Button>
         </div>
@@ -39,7 +39,7 @@ function RsvpView({ onNavigate }) {
           </div>
         </div>
 
-        <Input label="Your name" placeholder="e.g. Maya Olsen" />
+        <Input label="Your name" placeholder="e.g. Alex Rivera" />
 
         {attending === 'yes' && (
           <div>

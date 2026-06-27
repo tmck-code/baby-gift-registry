@@ -8,4 +8,6 @@ if __name__ == '__main__':
                     ssl_keyfile='/run/secrets/tls_key',
                     ssl_certfile='/run/secrets/tls_cert')
     else:
-        uvicorn.run(**common, reload=True)
+        # Watch only backend/* for restarts; frontend changes are picked up
+        # live by the browser via the /__livereload SSE stream (see app.main).
+        uvicorn.run(**common, reload=True, reload_dirs=['backend'])

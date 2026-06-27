@@ -4,12 +4,13 @@ function App() {
   const [user, setUser] = React.useState(null);
   const [isAdmin, setIsAdmin] = React.useState(false);
   const [reservations, setReservations] = React.useState({});
+  const [items, setItems] = React.useState([]);
   const [active, setActive] = React.useState(null);
   const [toast, setToast] = React.useState(null);
   const [showLogin, setShowLogin] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
 
-  const gifts = window.WREN.gifts.map(g => {
+  const gifts = items.map(g => {
     const r = reservations[String(g.id)] || { count: 0, mine: false };
     return { ...g, reservedCount: r.count, mine: r.mine, remaining: g.qty - r.count };
   });
@@ -25,13 +26,20 @@ function App() {
     }
   };
 
+  const fetchItems = async () => {
+    const res = await fetch('/api/items', { credentials: 'include' });
+    if (res.ok) {
+      setItems(await res.json());
+    }
+  };
+
   React.useEffect(() => {
     fetch('/api/auth/me', { credentials: 'include' })
       .then(res => {
         if (res.status === 200) {
           return res.json().then(data => {
             setUser({ email: data.email });
-            return fetchReservations();
+            return Promise.all([fetchReservations(), fetchItems()]);
           }).then(() => {
             setLoading(false);
           });
@@ -55,10 +63,6 @@ function App() {
 
   const confirmReserve = async (gift) => {
     setActive(null);
-    if (gift.group) {
-      showToast('Your contribution is in — thank you!');
-      return;
-    }
     const res = await fetch(`/api/reservations/${gift.id}`, {
       method: 'POST',
       credentials: 'include',
@@ -85,6 +89,7 @@ function App() {
   const handleLogin = ({ email }) => {
     setUser({ email });
     fetchReservations();
+    fetchItems();
     setShowLogin(false);
   };
 
@@ -98,6 +103,7 @@ function App() {
 
   const handleAdminLogin = () => {
     setIsAdmin(true);
+    setShowLogin(false);
     navigate('admin');
   };
 
@@ -115,7 +121,7 @@ function App() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Header route={route} onNavigate={navigate} reservedCount={reservedCount} onLogout={handleLogout} />
+      <Header route={route} onNavigate={navigate} reservedCount={reservedCount} onLogout={handleLogout} isAdmin={isAdmin} />
       <main style={{ flex: 1 }}>
         {route === 'home' && <Home onNavigate={navigate} />}
         {route === 'registry' && <RegistryView gifts={gifts} onReserve={setActive} />}
@@ -124,9 +130,8 @@ function App() {
       </main>
 
       <footer style={{ background: 'var(--ink-700)', color: 'var(--ink-200)', padding: '36px 28px' }}>
-        <div style={{ maxWidth: 1080, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
-          <img src="assets/wren-logo-light.svg" height="30" alt="Wren" />
-          <span style={{ fontSize: 13.5 }}>Made with care for our girl · August 2026</span>
+        <div style={{ maxWidth: 1080, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, flexWrap: 'wrap' }}>
+          <span style={{ fontSize: 13.5 }}>Beth &amp; Tom · August 2026</span>
         </div>
       </footer>
 
