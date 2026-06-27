@@ -5,16 +5,17 @@ function RegistryView({ gifts, onReserve }) {
   const { Tag, GiftCard, Badge } = window.WrenDesignSystem_0f565f;
   const { categories } = window.WREN;
   const [cat, setCat] = React.useState('all');
+  const isMobile = useIsMobile();
 
   const visible = cat === 'all' ? gifts : gifts.filter((g) => g.category === cat);
   const available = gifts.filter((g) => g.remaining > 0).length;
 
   return (
-    <div style={{ maxWidth: 1080, margin: '0 auto', padding: '40px 28px 72px' }}>
+    <div style={{ maxWidth: 1080, margin: '0 auto', padding: isMobile ? '28px 20px 56px' : '40px 28px 72px' }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
         <div>
           <span className="wren-eyebrow">The registry</span>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 42, letterSpacing: '-0.02em', margin: '10px 0 0', color: 'var(--text-strong)' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 32 : 42, letterSpacing: '-0.02em', margin: '10px 0 0', color: 'var(--text-strong)' }}>
             Everything on our list
           </h1>
         </div>
@@ -29,7 +30,7 @@ function RegistryView({ gifts, onReserve }) {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(232px, 1fr))', gap: 20 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fill, minmax(232px, 1fr))', gap: isMobile ? 14 : 20 }}>
         {visible.map((g) => (
           <div key={g.id}>
             <GiftCard

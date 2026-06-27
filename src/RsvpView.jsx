@@ -5,14 +5,15 @@ function RsvpView({ onNavigate }) {
   const [attending, setAttending] = React.useState('yes');
   const [guests, setGuests] = React.useState(1);
   const [sent, setSent] = React.useState(false);
+  const isMobile = useIsMobile();
 
   if (sent) {
     return (
-      <div style={{ maxWidth: 560, margin: '0 auto', padding: '80px 28px', textAlign: 'center' }}>
+      <div style={{ maxWidth: 560, margin: '0 auto', padding: isMobile ? '56px 20px' : '80px 28px', textAlign: 'center' }}>
         <span style={{ display: 'inline-flex', width: 64, height: 64, borderRadius: '50%', background: 'var(--sage-100)', color: 'var(--sage-500)', alignItems: 'center', justifyContent: 'center' }}>
           <Ico name="party-popper" size={30} />
         </span>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 40, margin: '20px 0 8px', color: 'var(--text-strong)' }}>See you there!</h1>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 32 : 40, margin: '20px 0 8px', color: 'var(--text-strong)' }}>See you there!</h1>
         <p style={{ fontSize: 17, color: 'var(--text-muted)', lineHeight: 1.6 }}>We&rsquo;ve got you down. {event.date}, {event.place}. Beth &amp; Tom are so glad you&rsquo;re coming.</p>
         <div style={{ marginTop: 24 }}>
           <Button variant="soft" leadingIcon={<Ico name="gift" size={17} />} onClick={() => onNavigate('registry')}>Browse the registry</Button>
@@ -22,9 +23,9 @@ function RsvpView({ onNavigate }) {
   }
 
   return (
-    <div style={{ maxWidth: 560, margin: '0 auto', padding: '48px 28px 72px' }}>
+    <div style={{ maxWidth: 560, margin: '0 auto', padding: isMobile ? '32px 20px 56px' : '48px 28px 72px' }}>
       <span className="wren-eyebrow">RSVP</span>
-      <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 42, letterSpacing: '-0.02em', margin: '10px 0 6px', color: 'var(--text-strong)' }}>Will you join us?</h1>
+      <h1 style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 32 : 42, letterSpacing: '-0.02em', margin: '10px 0 6px', color: 'var(--text-strong)' }}>Will you join us?</h1>
       <p style={{ fontSize: 16, color: 'var(--text-muted)', margin: '0 0 28px' }}>{event.date} · {event.time} · {event.place}</p>
 
       <Card elevation="md" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>

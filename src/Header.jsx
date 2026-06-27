@@ -2,7 +2,7 @@
 const { GiftCard: _gc } = window.WrenDesignSystem_0f565f;
 
 function Header({ route, onNavigate, reservedCount, onLogout, isAdmin }) {
-  const { IconButton } = window.WrenDesignSystem_0f565f;
+  const isMobile = useIsMobile();
   const link = (id, label) => (
     <button
       onClick={() => onNavigate(id)}
@@ -22,13 +22,13 @@ function Header({ route, onNavigate, reservedCount, onLogout, isAdmin }) {
     <header style={{
       position: 'sticky', top: 0, zIndex: 20,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '14px 28px', background: 'rgba(248,244,237,0.82)',
+      padding: isMobile ? '12px 16px' : '14px 28px', background: 'rgba(248,244,237,0.82)',
       backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border-subtle)',
     }}>
       <button onClick={() => onNavigate('home')} style={{ border: 'none', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-        <img src="assets/wren-mark.svg" height="32" alt="Home" />
+        <img src="assets/wren-mark.svg" height={isMobile ? 28 : 32} alt="Home" />
       </button>
-      <nav style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+      <nav style={{ display: 'flex', gap: isMobile ? 14 : 24, alignItems: 'center' }}>
         {isAdmin ? (
           link('admin', 'Registry items')
         ) : (
@@ -36,14 +36,6 @@ function Header({ route, onNavigate, reservedCount, onLogout, isAdmin }) {
             {link('home', 'Home')}
             {link('registry', 'Registry')}
             {link('rsvp', 'RSVP')}
-            <div style={{ position: 'relative' }}>
-              <IconButton label="Reserved gifts" variant="soft" round onClick={() => onNavigate('registry')}>
-                <Ico name="gift" size={18} />
-              </IconButton>
-              {reservedCount > 0 && (
-                <span style={{ position: 'absolute', top: -4, right: -4, minWidth: 18, height: 18, padding: '0 5px', borderRadius: 9, background: 'var(--brand)', color: '#fff', fontSize: 11, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'var(--shadow-sm)' }}>{reservedCount}</span>
-              )}
-            </div>
           </React.Fragment>
         )}
         {onLogout && (

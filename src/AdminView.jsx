@@ -101,6 +101,7 @@ function AdminView() {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
   const [editing, setEditing] = React.useState(null); // item object, EMPTY_ITEM, or null
+  const isMobile = useIsMobile();
 
   const load = React.useCallback(() => {
     setLoading(true);
@@ -125,9 +126,9 @@ function AdminView() {
   const onSaved = () => { setEditing(null); load(); };
 
   return (
-    <div style={{ maxWidth: 900, margin: '0 auto', padding: '40px 28px' }}>
+    <div style={{ maxWidth: 900, margin: '0 auto', padding: isMobile ? '28px 20px' : '40px 28px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, marginBottom: 28, flexWrap: 'wrap' }}>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 32, margin: 0, color: 'var(--text-strong)' }}>Admin: Registry items</h1>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 26 : 32, margin: 0, color: 'var(--text-strong)' }}>Admin: Registry items</h1>
         <Button leadingIcon={<Ico name="plus" size={18} color="#fff" />} onClick={() => setEditing(EMPTY_ITEM)}>Add item</Button>
       </div>
 

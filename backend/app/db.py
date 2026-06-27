@@ -37,6 +37,9 @@ def get_db() -> sqlite3.Connection:
 
 
 def init_db() -> None:
+    parent = os.path.dirname(DB_PATH)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
     with get_db() as conn:
         conn.executescript(_DDL)
 

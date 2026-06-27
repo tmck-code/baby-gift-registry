@@ -2,19 +2,20 @@
 function Home({ onNavigate }) {
   const { Button, Card, Badge, Avatar } = window.WrenDesignSystem_0f565f;
   const { event, parents } = window.WREN;
+  const isMobile = useIsMobile();
   return (
     <div>
       {/* Hero */}
-      <section style={{ maxWidth: 1080, margin: '0 auto', padding: '64px 28px 40px', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 56, alignItems: 'center' }}>
+      <section style={{ maxWidth: 1080, margin: '0 auto', padding: isMobile ? '36px 20px 28px' : '64px 28px 40px', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.1fr 0.9fr', gap: isMobile ? 32 : 56, alignItems: 'center' }}>
         <div>
           <span className="wren-eyebrow">Beth &amp; Tom · Baby shower</span>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 60, lineHeight: 1.02, letterSpacing: '-0.02em', margin: '14px 0 0', color: 'var(--text-strong)' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 38 : 60, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '14px 0 0', color: 'var(--text-strong)' }}>
             We can&rsquo;t wait<br />to meet her.
           </h1>
-          <p style={{ fontSize: 19, lineHeight: 1.6, color: 'var(--text-body)', maxWidth: 460, margin: '20px 0 0' }}>
+          <p style={{ fontSize: isMobile ? 17 : 19, lineHeight: 1.6, color: 'var(--text-body)', maxWidth: 460, margin: '20px 0 0' }}>
             A little one is on the way, and we&rsquo;re slowly feathering the nest. If you&rsquo;d like to help us get ready, everything we&rsquo;re hoping for is right here.
           </p>
-          <div style={{ display: 'flex', gap: 12, marginTop: 30 }}>
+          <div style={{ display: 'flex', gap: 12, marginTop: 30, flexWrap: 'wrap' }}>
             <Button size="lg" leadingIcon={<Ico name="gift" size={18} color="#fff" />} onClick={() => onNavigate('registry')}>View the registry</Button>
             <Button size="lg" variant="secondary" onClick={() => onNavigate('rsvp')}>RSVP</Button>
           </div>

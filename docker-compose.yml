@@ -19,6 +19,8 @@ x-web-base: &web-base
   ports:
     - "$WEB_PORT:8000"
   volumes:
+    # Host bind mount. The container runs as uid 999, so on Linux this dir must
+    # be owned by 999 — run `make prepare-data` once before the first `serve`.
     - ./dbs/db-data:/app/data
   deploy:
     resources:

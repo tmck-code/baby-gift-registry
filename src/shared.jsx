@@ -14,4 +14,21 @@ function Ico({ name, size = 20, strokeWidth = 1.75, color = 'currentColor', styl
   return React.createElement('span', { ref, style: { display: 'inline-flex', ...style } });
 }
 
-Object.assign(window, { Ico });
+// Responsive helper — true when the viewport is at or below `max` px wide.
+function useMediaQuery(max = 640) {
+  const query = `(max-width: ${max}px)`;
+  const get = () => typeof window !== 'undefined' && window.matchMedia(query).matches;
+  const [matches, setMatches] = React.useState(get);
+  React.useEffect(() => {
+    const mql = window.matchMedia(query);
+    const onChange = () => setMatches(mql.matches);
+    onChange();
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, [query]);
+  return matches;
+}
+
+const useIsMobile = () => useMediaQuery(640);
+
+Object.assign(window, { Ico, useMediaQuery, useIsMobile });
