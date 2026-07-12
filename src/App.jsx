@@ -1,6 +1,6 @@
 // Wren registry — root app
 function App() {
-  const [route, setRoute] = React.useState('home');
+  const [route, setRoute] = React.useState('registry');
   const [user, setUser] = React.useState(null);
   const [isAdmin, setIsAdmin] = React.useState(false);
   const [reservations, setReservations] = React.useState({});
@@ -123,9 +123,7 @@ function App() {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header route={route} onNavigate={navigate} reservedCount={reservedCount} onLogout={handleLogout} isAdmin={isAdmin} />
       <main style={{ flex: 1 }}>
-        {route === 'home' && <Home onNavigate={navigate} />}
         {route === 'registry' && <RegistryView gifts={gifts} onReserve={setActive} />}
-        {route === 'rsvp' && <RsvpView onNavigate={navigate} />}
         {route === 'admin' && <AdminView />}
       </main>
 

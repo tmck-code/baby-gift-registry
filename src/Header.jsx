@@ -25,18 +25,14 @@ function Header({ route, onNavigate, reservedCount, onLogout, isAdmin }) {
       padding: isMobile ? '12px 16px' : '14px 28px', background: 'rgba(248,244,237,0.82)',
       backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border-subtle)',
     }}>
-      <button onClick={() => onNavigate('home')} style={{ border: 'none', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+      <button onClick={() => onNavigate('registry')} style={{ border: 'none', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
         <img src="assets/wren-mark.svg" height={isMobile ? 28 : 32} alt="Home" />
       </button>
       <nav style={{ display: 'flex', gap: isMobile ? 14 : 24, alignItems: 'center' }}>
         {isAdmin ? (
           link('admin', 'Registry items')
         ) : (
-          <React.Fragment>
-            {link('home', 'Home')}
-            {link('registry', 'Registry')}
-            {link('rsvp', 'RSVP')}
-          </React.Fragment>
+          link('registry', 'Registry')
         )}
         {onLogout && (
           <button
